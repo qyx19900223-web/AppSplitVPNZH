@@ -1,0 +1,18 @@
+AppSplitVPNZH V13 — GitHub Actions 云端构建包
+
+用途
+- 本项目是 AppSplitVPN 简体中文运行时模块的源码。
+- 通过 GitHub Actions 的 macOS runner 安装 RootHide Theos 并尝试构建 RootHide DEB。
+- 这不是已经编译好的 DEB，也没有在 iPhone 上验证。
+
+一次性操作
+1. 登录 GitHub，创建一个新的空仓库（建议设为 Private；若使用私有仓库，GitHub Actions macOS 分钟可能受账户额度/计费限制）。
+2. 将本压缩包解压，把其中所有文件和 .github 文件夹上传到仓库根目录并提交到 main 分支。
+3. 打开仓库的 Actions 页面，选择 “Build AppSplitVPNZH (RootHide)”，点击 Run workflow。
+4. 等待任务结束。只有任务显示绿色成功，且 Artifacts 中出现 AppSplitVPNZH-RootHide-DEB，才算云端编译和打包成功。
+5. 下载 Artifact ZIP，解压后取得 .deb。先不要安装，先把构建日志和 DEB 文件提供给我做静态检查。
+
+注意
+- 工作流使用 macOS runner，因为 RootHide 目标需要 RootHide Theos/SDK；公开的 Theos Codespace 模板说明其 Linux 容器不能直接构建 RootHide 包，RootHide 包需走 GitHub Actions 工作流。
+- 工作流引用第三方 GitHub Action waruhachi/theos-action，并从 roothide/theos 与 theos/sdks 获取工具链/SDK。首次运行若上游接口或版本变化，可能失败；失败日志可用于定位，不代表已经有可安装包。
+- 不需要在 iPhone 上执行任何命令，也不要先卸载当前插件。

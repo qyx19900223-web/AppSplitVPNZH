@@ -1,0 +1,9 @@
+Package: com.ratush.appsplitvpn.zh
+Name: App Split VPN 简体中文界面模块
+Version: 0.4.8-zh13
+Architecture: iphoneos-arm64e
+Description: Controller-scoped Simplified Chinese runtime localization for App Split VPN preferences.
+Maintainer: local build
+Author: local build
+Section: Tweaks
+Depends: firmware (>= 15.0), mobilesubstrate | ellekit

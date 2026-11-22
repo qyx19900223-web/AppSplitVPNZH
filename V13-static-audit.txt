@@ -1,0 +1,16 @@
+AppSplitVPNZH V13 static audit
+
+Source: original uploaded appsplitvpn_0.4.8.deb
+Target executable: Library/PreferenceBundles/AppSplitVPNPrefs.bundle/AppSplitVPNPrefs
+
+Objective-C dictionary keys parsed: 104
+Exact keys present in original executable ASCII string table: 104
+Missing exact keys: 0
+Duplicate dictionary keys: 0
+
+V12 defect corrected:
+The previous source contained a malformed Objective-C literal for the key containing the quoted phrase \"No link\". V12's parser counted 103 valid keys and silently omitted that malformed line. V13 uses escaped quotes and the key is now included in the 104-key audit.
+
+Safety checks: UITextField.text and UITextView.text are not assigned; attributed labels, button titles, and text-field placeholders are not rewritten; standalone routing identifiers remain untranslated.
+
+Limitations: static source audit only. No Logos preprocessing, compilation, DEB packaging, signing, injection, or device test has been performed.
