@@ -22,7 +22,9 @@ jobs:
       - name: Build DEB
         run: |
           make clean package FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=roothide
-
+      - name: Install Debian package tools
+        run: |
+          brew install dpkg
       - name: Verify DEB
         run: |
           set -e
