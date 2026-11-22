@@ -6,11 +6,19 @@
 
 static BOOL ASVZHIsTargetController(UIViewController *controller) {
     if (![controller isKindOfClass:UIViewController.class]) return NO;
+
+    NSString *className = NSStringFromClass([controller class]) ?: @"";
+
+    if ([className isEqualToString:@"ASVRootController"] ||
+        [className hasPrefix:@"ASV"]) return YES;
+
     NSBundle *bundle = [NSBundle bundleForClass:[controller class]];
     NSString *path = bundle.bundlePath ?: @"";
     NSString *identifier = bundle.bundleIdentifier ?: @"";
+
     return [path containsString:@"AppSplitVPNPrefs.bundle"] ||
            [identifier isEqualToString:@"com.ratush.appsplitvpn.preferences"];
+}
 }
 
 static NSString *ASVZH(NSString *s) {
